@@ -1,0 +1,16 @@
+{
+  "name": "agrocultivo-web",
+  "version": "1.0.0",
+  "description": "Sistema web de Innovaciones Agrícolas de Guatemala",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "pg": "^8.13.1"
+  }
+}
