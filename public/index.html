@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Agrocultivo | Sistema</title>
+
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <img
+                src="/assets/logo-agrocultivo.png"
+                alt="Agrocultivo"
+            >
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <!-- INICIO -->
+            <button
+                class="nav-item active"
+                data-page="home"
+                type="button"
+            >
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 11.5L12 4l9 7.5"/>
+                        <path d="M5 10.5V20h14v-9.5"/>
+                        <path d="M9 20v-6h6v6"/>
+                    </svg>
+                </span>
+
+                <span>Inicio</span>
+            </button>
+
+
+            <!-- TICKETS -->
+            <button
+                class="nav-item"
+                data-page="tickets"
+                type="button"
+            >
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/>
+                        <path d="M9 8h6"/>
+                        <path d="M9 12h6"/>
+                        <path d="M9 16h4"/>
+                    </svg>
+                </span>
+
+                <span>Tickets</span>
+            </button>
+
+
+            <!-- FACTURA CAMBIARIA -->
+            <button
+                class="nav-item"
+                data-page="cambiarias"
+                type="button"
+            >
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 2h9l4 4v16H6z"/>
+                        <path d="M14 2v5h5"/>
+                        <path d="M9 12h6"/>
+                        <path d="M9 16h6"/>
+                    </svg>
+                </span>
+
+                <span>Factura Cambiaria</span>
+            </button>
+
+
+            <!-- ENVÍOS -->
+            <button
+                class="nav-item"
+                data-page="envios"
+                type="button"
+            >
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 7l9-4 9 4-9 4z"/>
+                        <path d="M3 7v10l9 4 9-4V7"/>
+                        <path d="M12 11v10"/>
+                    </svg>
+                </span>
+
+                <span>Envíos</span>
+            </button>
+
+
+            <!-- REPORTES -->
+            <div
+                class="nav-group"
+                id="reportsGroup"
+            >
+
+                <button
+                    class="nav-item nav-group-toggle"
+                    id="reportsToggle"
+                    type="button"
+                >
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 20V10"/>
+                            <path d="M10 20V4"/>
+                            <path d="M16 20v-7"/>
+                            <path d="M22 20H2"/>
+                        </svg>
+                    </span>
+
+                    <span class="nav-group-label">
+                        Reportes y Caja
+                    </span>
+
+                    <span class="nav-chevron">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </span>
+                </button>
+
+
+                <div
+                    class="nav-submenu"
+                    id="reportsSubmenu"
+                >
+
+                    <!-- VENTAS -->
+                    <button
+                        class="nav-item nav-subitem"
+                        data-page="ventas-generales"
+                        type="button"
+                    >
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="9" cy="20" r="1"/>
+                                <circle cx="18" cy="20" r="1"/>
+                                <path d="M3 4h2l2 11h11l2-7H7"/>
+                            </svg>
+                        </span>
+
+                        <span>Ventas generales</span>
+                    </button>
+
+
+                    <!-- CORTE CAJERO -->
+                    <button
+                        class="nav-item nav-subitem"
+                        data-page="corte-cajero"
+                        type="button"
+                    >
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="10" cy="8" r="4"/>
+                                <path d="M3 21v-2a6 6 0 0 1 12 0v2"/>
+                                <path d="M17 11l2 2 4-4"/>
+                            </svg>
+                        </span>
+
+                        <span>Corte por cajero</span>
+                    </button>
+
+
+                    <!-- CORTE GENERAL -->
+                    <button
+                        class="nav-item nav-subitem"
+                        data-page="corte-general"
+                        type="button"
+                    >
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="5" y="2" width="14" height="20" rx="2"/>
+                                <path d="M8 6h8"/>
+                                <path d="M8 11h2"/>
+                                <path d="M14 11h2"/>
+                                <path d="M8 15h2"/>
+                                <path d="M14 15h2"/>
+                                <path d="M8 19h8"/>
+                            </svg>
+                        </span>
+
+                        <span>Corte general</span>
+                    </button>
+
+
+                    <!-- CUADRE -->
+                    <button
+                        class="nav-item nav-subitem"
+                        data-page="cuadre-caja"
+                        type="button"
+                    >
+                        <span class="nav-icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M6 9h.01"/>
+                                <path d="M18 15h.01"/>
+                            </svg>
+                        </span>
+
+                        <span>Cuadre de caja</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+        <!-- USUARIO -->
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                A
+            </div>
+
+            <div class="user-info">
+
+                <strong id="sidebarUserName">
+                    Administrador
+                </strong>
+
+                <span id="sidebarUserRole">
+                    Administrador
+                </span>
+
+            </div>
+
+            <button
+                id="logoutButton"
+                class="logout-button"
+                title="Cerrar sesión"
+                type="button"
+            >
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 17l5-5-5-5"/>
+                    <path d="M15 12H3"/>
+                    <path d="M14 3h6v18h-6"/>
+                </svg>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- CONTENIDO -->
+    <div class="main-area">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    id="menuButton"
+                    class="menu-button"
+                    type="button"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 6h16"/>
+                        <path d="M4 12h16"/>
+                        <path d="M4 18h16"/>
+                    </svg>
+                </button>
+
+                <div>
+
+                    <div
+                        id="currentDate"
+                        class="current-date"
+                    >
+                        Fecha
+                    </div>
+
+                    <div
+                        id="currentTime"
+                        class="current-time"
+                    >
+                        Hora
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-greeting">
+
+                <span
+                    id="dayPeriodIcon"
+                    class="day-period-icon"
+                >
+                    ☀
+                </span>
+
+                <span id="greetingText">
+                    Buenos días, Administrador
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <main
+            id="mainContent"
+            class="main-content"
+        >
+
+            <section class="home-view">
+
+                <div class="welcome-card">
+
+                    <span class="welcome-kicker">
+                        INNOVACIONES AGRÍCOLAS
+                    </span>
+
+                    <h1 id="welcomeTitle">
+                        Bienvenido, Administrador
+                    </h1>
+
+                    <p>
+                        Sistema de Innovaciones Agrícolas de Guatemala
+                    </p>
+
+                    <span class="welcome-help">
+                        Seleccione una opción del menú para comenzar.
+                    </span>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script src="/js/app.js"></script>
+
+</body>
+</html>
