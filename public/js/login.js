@@ -1,82 +1,152 @@
-const loginForm =
-    document.getElementById("loginForm");
-
-const usernameInput =
-    document.getElementById("username");
-
-const passwordInput =
-    document.getElementById("password");
-
-const togglePassword =
-    document.getElementById("togglePassword");
-
-const loginButton =
-    document.getElementById("loginButton");
-
-const loginError =
-    document.getElementById("loginError");
-
-togglePassword.addEventListener(
-    "click",
+document.addEventListener(
+    "DOMContentLoaded",
     () => {
-        const showing =
-            passwordInput.type === "text";
 
-        passwordInput.type =
-            showing
-                ? "password"
-                : "text";
-    }
-);
-
-loginForm.addEventListener(
-    "submit",
-    async event => {
-        event.preventDefault();
-
-        const username =
-            usernameInput.value.trim();
-
-        const password =
-            passwordInput.value.trim();
-
-        loginError.hidden = true;
-
-        if (!username || !password) {
-            showError(
-                "Ingresa tu usuario y contraseña."
+        const form =
+            document.querySelector(
+                "form"
             );
 
+
+        if (!form) {
+
             return;
+
         }
 
-        loginButton.disabled = true;
-        loginButton.textContent =
-            "Ingresando...";
 
-        await new Promise(resolve =>
-            setTimeout(resolve, 400)
+        const usernameInput =
+            form.querySelector(
+                'input[name="username"]'
+            );
+
+        const passwordInput =
+            form.querySelector(
+                'input[name="password"]'
+            );
+
+        const submitButton =
+            form.querySelector(
+                'button[type="submit"]'
+            );
+
+
+        const message =
+            document.createElement(
+                "div"
+            );
+
+
+        message.style.marginTop =
+            "12px";
+
+        message.style.fontSize =
+            "13px";
+
+        message.style.minHeight =
+            "20px";
+
+
+        form.appendChild(
+            message
         );
 
-        /*
-         * LOGIN TEMPORAL
-         *
-         * Por ahora cualquier usuario y contraseña
-         * permiten entrar para poder revisar el diseño.
-         *
-         * Luego sustituiremos esto por:
-         * POST /api/auth/login
-         */
-        window.location.href =
-            "/index.html";
+
+        form.addEventListener(
+            "submit",
+            async event => {
+
+                event.preventDefault();
+
+
+                message.textContent =
+                    "";
+
+                message.style.color =
+                    "#b42318";
+
+
+                submitButton.disabled =
+                    true;
+
+                submitButton.textContent =
+                    "Ingresando...";
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "/api/auth/login",
+                            {
+                                method:
+                                    "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body:
+                                    JSON.stringify({
+                                        username:
+                                            usernameInput
+                                                .value
+                                                .trim(),
+
+                                        password:
+                                            passwordInput
+                                                .value
+                                    })
+                            }
+                        );
+
+
+                    const result =
+                        await response.json();
+
+
+                    if (
+                        !response.ok ||
+                        !result.ok
+                    ) {
+
+                        message.textContent =
+                            result.message ||
+                            "No fue posible iniciar sesión.";
+
+                        return;
+
+                    }
+
+
+                    window.location.href =
+                        "/index.html";
+
+                }
+                catch (error) {
+
+                    console.error(
+                        error
+                    );
+
+
+                    message.textContent =
+                        "No fue posible comunicarse con el servidor.";
+
+                }
+                finally {
+
+                    submitButton.disabled =
+                        false;
+
+                    submitButton.textContent =
+                        "Iniciar sesión";
+
+                }
+
+            }
+        );
+
     }
 );
-
-function showError(message) {
-    loginError.textContent = message;
-    loginError.hidden = false;
-
-    loginButton.disabled = false;
-    loginButton.textContent =
-        "Iniciar sesión";
-}
